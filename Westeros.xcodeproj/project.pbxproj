@@ -37,6 +37,10 @@
 		5EB9E4BA2049852A0002E61B /* SeasonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4B82049852A0002E61B /* SeasonListViewController.xib */; };
 		5EB9E4BD204985950002E61B /* SeasonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4BB204985950002E61B /* SeasonDetailViewController.swift */; };
 		5EB9E4BE204985950002E61B /* SeasonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4BC204985950002E61B /* SeasonDetailViewController.xib */; };
+		5EB9E4C12049B98E0002E61B /* EpisodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4BF2049B98E0002E61B /* EpisodeListViewController.swift */; };
+		5EB9E4C22049B98E0002E61B /* EpisodeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C02049B98E0002E61B /* EpisodeListViewController.xib */; };
+		5EB9E4C52049B9A70002E61B /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C32049B9A70002E61B /* EpisodeDetailViewController.swift */; };
+		5EB9E4C62049B9A70002E61B /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C42049B9A70002E61B /* EpisodeDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		5EB9E4B82049852A0002E61B /* SeasonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonListViewController.xib; sourceTree = "<group>"; };
 		5EB9E4BB204985950002E61B /* SeasonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailViewController.swift; sourceTree = "<group>"; };
 		5EB9E4BC204985950002E61B /* SeasonDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonDetailViewController.xib; sourceTree = "<group>"; };
+		5EB9E4BF2049B98E0002E61B /* EpisodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewController.swift; sourceTree = "<group>"; };
+		5EB9E4C02049B98E0002E61B /* EpisodeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeListViewController.xib; sourceTree = "<group>"; };
+		5EB9E4C32049B9A70002E61B /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		5EB9E4C42049B9A70002E61B /* EpisodeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,10 @@
 				5EB9E4B82049852A0002E61B /* SeasonListViewController.xib */,
 				5EB9E4BB204985950002E61B /* SeasonDetailViewController.swift */,
 				5EB9E4BC204985950002E61B /* SeasonDetailViewController.xib */,
+				5EB9E4BF2049B98E0002E61B /* EpisodeListViewController.swift */,
+				5EB9E4C02049B98E0002E61B /* EpisodeListViewController.xib */,
+				5EB9E4C32049B9A70002E61B /* EpisodeDetailViewController.swift */,
+				5EB9E4C42049B9A70002E61B /* EpisodeDetailViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -299,9 +311,11 @@
 				4BAFC988203238ED00C8BF74 /* targaryenSmall.jpg in Resources */,
 				4B528434203644F600E03DD6 /* HouseListViewController.xib in Resources */,
 				4BC6ADDC203B68C100813C0D /* MemberListViewController.xib in Resources */,
+				5EB9E4C22049B98E0002E61B /* EpisodeListViewController.xib in Resources */,
 				5EB9E4BA2049852A0002E61B /* SeasonListViewController.xib in Resources */,
 				4BAFC98D20323A8500C8BF74 /* HouseDetailViewController.xib in Resources */,
 				4BC935FF202CE4A7007FE051 /* LaunchScreen.storyboard in Resources */,
+				5EB9E4C62049B9A70002E61B /* EpisodeDetailViewController.xib in Resources */,
 				4BC935FC202CE4A7007FE051 /* Assets.xcassets in Resources */,
 				4BAFC987203238ED00C8BF74 /* codeIsComing.png in Resources */,
 			);
@@ -342,6 +356,7 @@
 				5EB9E4AD2048C0DC0002E61B /* Season.swift in Sources */,
 				5EB9E4B62048CBE90002E61B /* Date+Additions.swift in Sources */,
 				4BC6ADD5203B607C00813C0D /* House.swift in Sources */,
+				5EB9E4C52049B9A70002E61B /* EpisodeDetailViewController.swift in Sources */,
 				4BAFC99120337C8500C8BF74 /* UIViewController+Additions.swift in Sources */,
 				5EB9E4BD204985950002E61B /* SeasonDetailViewController.swift in Sources */,
 				5EB9E4AF2048C0EA0002E61B /* Episode.swift in Sources */,
@@ -349,6 +364,7 @@
 				4BAFC9952033816C00C8BF74 /* Repository.swift in Sources */,
 				4B52842B20362B8D00E03DD6 /* WikiViewController.swift in Sources */,
 				4B528433203644F600E03DD6 /* HouseListViewController.swift in Sources */,
+				5EB9E4C12049B98E0002E61B /* EpisodeListViewController.swift in Sources */,
 				5EB9E4B92049852A0002E61B /* SeasonListViewController.swift in Sources */,
 				4BC6ADDB203B68C100813C0D /* MemberListViewController.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  SeasonDetailViewController.swift
+//  EpisodeDetailViewController.swift
 //  Westeros
 //
 //  Created by VINACHES LOPEZ JORGE on 02/03/2018.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class SeasonDetailViewController: UIViewController {
+class EpisodeDetailViewController: UIViewController {
 
     // Mark: - Properties
-    var model: Season
+    var model: Episode
     
     // Mark: - Initialization
-    init(model: Season) {
+    init(model: Episode) {
         self.model = model
         
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
-        title = model.name
+        title = model.title
     }
     
     required init?(coder aDecoder: NSCoder) {
