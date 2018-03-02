@@ -28,6 +28,11 @@
 		4BC93615202CF019007FE051 /* HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC93614202CF019007FE051 /* HouseTests.swift */; };
 		4BC9361B202CFD85007FE051 /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9361A202CFD85007FE051 /* PersonTests.swift */; };
 		4BC9361D202CFDF0007FE051 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9361C202CFDF0007FE051 /* Person.swift */; };
+		5EB9E4AD2048C0DC0002E61B /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4AC2048C0DC0002E61B /* Season.swift */; };
+		5EB9E4AF2048C0EA0002E61B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4AE2048C0EA0002E61B /* Episode.swift */; };
+		5EB9E4B12048CB2A0002E61B /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4B02048CB2A0002E61B /* SeasonTests.swift */; };
+		5EB9E4B32048CB3A0002E61B /* EpisodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4B22048CB3A0002E61B /* EpisodeTests.swift */; };
+		5EB9E4B62048CBE90002E61B /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4B52048CBE90002E61B /* Date+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		4BC93617202CF1BA007FE051 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		4BC9361A202CFD85007FE051 /* PersonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
 		4BC9361C202CFDF0007FE051 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		5EB9E4AC2048C0DC0002E61B /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		5EB9E4AE2048C0EA0002E61B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		5EB9E4B02048CB2A0002E61B /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
+		5EB9E4B22048CB3A0002E61B /* EpisodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTests.swift; sourceTree = "<group>"; };
+		5EB9E4B52048CBE90002E61B /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +150,7 @@
 		4BC935F3202CE4A7007FE051 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				5EB9E4B42048CBD00002E61B /* FoundationExtensions */,
 				4BAFC98F20337C1C00C8BF74 /* UIKitExtensions */,
 				4BAFC98E20323AAA00C8BF74 /* Controllers */,
 				4BC93619202CF82C007FE051 /* Domain */,
@@ -159,6 +170,8 @@
 				4BC93614202CF019007FE051 /* HouseTests.swift */,
 				4BC9361A202CFD85007FE051 /* PersonTests.swift */,
 				4BAFC9922033807900C8BF74 /* RepositoryTests.swift */,
+				5EB9E4B02048CB2A0002E61B /* SeasonTests.swift */,
+				5EB9E4B22048CB3A0002E61B /* EpisodeTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -169,8 +182,18 @@
 				4BC93617202CF1BA007FE051 /* House.swift */,
 				4BC9361C202CFDF0007FE051 /* Person.swift */,
 				4BAFC9942033816C00C8BF74 /* Repository.swift */,
+				5EB9E4AC2048C0DC0002E61B /* Season.swift */,
+				5EB9E4AE2048C0EA0002E61B /* Episode.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		5EB9E4B42048CBD00002E61B /* FoundationExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5EB9E4B52048CBE90002E61B /* Date+Additions.swift */,
+			);
+			path = FoundationExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,8 +325,11 @@
 			files = (
 				4BAFC98C20323A8500C8BF74 /* HouseDetailViewController.swift in Sources */,
 				4BC9361D202CFDF0007FE051 /* Person.swift in Sources */,
+				5EB9E4AD2048C0DC0002E61B /* Season.swift in Sources */,
+				5EB9E4B62048CBE90002E61B /* Date+Additions.swift in Sources */,
 				4BC6ADD5203B607C00813C0D /* House.swift in Sources */,
 				4BAFC99120337C8500C8BF74 /* UIViewController+Additions.swift in Sources */,
+				5EB9E4AF2048C0EA0002E61B /* Episode.swift in Sources */,
 				4BC935F5202CE4A7007FE051 /* AppDelegate.swift in Sources */,
 				4BAFC9952033816C00C8BF74 /* Repository.swift in Sources */,
 				4B52842B20362B8D00E03DD6 /* WikiViewController.swift in Sources */,
@@ -316,8 +342,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB9E4B12048CB2A0002E61B /* SeasonTests.swift in Sources */,
 				4BC93615202CF019007FE051 /* HouseTests.swift in Sources */,
 				4BC9361B202CFD85007FE051 /* PersonTests.swift in Sources */,
+				5EB9E4B32048CB3A0002E61B /* EpisodeTests.swift in Sources */,
 				4BAFC9932033807900C8BF74 /* RepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,11 +13,17 @@ final class Repository {
 }
 
 protocol HouseFactory {
-    typealias Filter = (House) -> Bool
+    typealias HouseFilter = (House) -> Bool
+    typealias SeasonFilter = (Season) -> Bool
     
     var houses: [House] { get }
     func house(named: String) -> House?
-    func houses(filteredBy: Filter) -> [House]
+    func houses(filteredBy: HouseFilter) -> [House]
+}
+
+protocol SeasonFactory {
+    var seasons: [Season] { get }
+    func season(named: String) -> Season?
 }
 
 final class LocalFactory: HouseFactory {
@@ -54,11 +60,46 @@ final class LocalFactory: HouseFactory {
     
     func house(named name: String) -> House? {
         let house = houses.filter{ $0.name.uppercased() == name.uppercased() }.first
-        //let house = houses.first{ $0.name.uppercased() == name.uppercased() }
+
         return house
     }
     
-    func houses(filteredBy: Filter) -> [House] {
+    func houses(filteredBy: HouseFilter) -> [House] {
         return Repository.local.houses.filter(filteredBy)
+    }
+}
+
+extension LocalFactory: SeasonFactory {
+    var seasons: [Season] {
+        let seasonOne = Season(name: "T1", releaseDate: Date.init(dateString: "2011-04-17"), firstEpisodeTitle: "Winter Is Coming")
+        let seasonTwo = Season(name: "T2", releaseDate: Date.init(dateString: "2012-04-01"), firstEpisodeTitle: "The North Remembers")
+        let seasonThree = Season(name: "T3", releaseDate: Date.init(dateString: "2013-03-31"), firstEpisodeTitle: "Valar Dohaeris")
+        let seasonFour = Season(name: "T4", releaseDate: Date.init(dateString: "2014-04-06"), firstEpisodeTitle: "Two Swords")
+        let seasonFive = Season(name: "T5", releaseDate: Date.init(dateString: "2015-04-12"), firstEpisodeTitle: "The Wars to Come")
+        let seasonSix = Season(name: "T6", releaseDate: Date.init(dateString: "2016-04-24"), firstEpisodeTitle: "The Red Woman")
+        let seasonSeven = Season(name: "T7", releaseDate: Date.init(dateString: "2017-07-16"), firstEpisodeTitle: "Dragonstone")
+        
+        let _ = Episode(title: "The Kingsroad", issueDate: Date.init(dateString: "2011-04-24"), season: seasonOne)
+        let _ = Episode(title: "Lord Snow", issueDate: Date.init(dateString: "2011-05-01"), season: seasonOne)
+        let _ = Episode(title: "Cripples, Bastards, and Broken Things", issueDate: Date.init(dateString: "2011-05-08"), season: seasonOne)
+        
+        let _ = Episode(title: "The Night Lands", issueDate: Date.init(dateString: "2012-04-08"), season: seasonTwo)
+        let _ = Episode(title: "Dark Wings, Dark Words", issueDate: Date.init(dateString: "2013-04-07"), season: seasonThree)
+        let _ = Episode(title: "The Lion and the Rose", issueDate: Date.init(dateString: "2014-04-13"), season: seasonFour)
+        let _ = Episode(title: "The House of Black and White", issueDate: Date.init(dateString: "2015-04-12"), season: seasonFive)
+        let _ = Episode(title: "Home", issueDate: Date.init(dateString: "2016-05-01"), season: seasonSix)
+        let _ = Episode(title: "Stormborn", issueDate: Date.init(dateString: "2017-07-23"), season: seasonSeven)
+        
+        return [seasonSeven, seasonSix, seasonFive, seasonFour, seasonThree, seasonTwo, seasonOne].sorted()
+    }
+    
+    func season(named: String) -> Season? {
+        let season = seasons.filter{ $0.name.uppercased() == named.uppercased() }.first
+        
+        return season
+    }
+    
+    func seasons(filteredBy: SeasonFilter) -> [Season] {
+        return Repository.local.seasons.filter(filteredBy)
     }
 }
