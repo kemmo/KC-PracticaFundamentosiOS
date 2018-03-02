@@ -24,7 +24,6 @@ class HouseDetailViewController: UIViewController {
         self.model = model
         // Llamas a super
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
-        title = model.name
     }
     
     // Chapuza de los de Cupertino relacionada con los nil
@@ -35,6 +34,7 @@ class HouseDetailViewController: UIViewController {
     // Mark: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setupUI()
         syncModelWithView()
     }
@@ -42,6 +42,8 @@ class HouseDetailViewController: UIViewController {
     // Mark: - Sync
     func syncModelWithView() {
         // Model -> View
+        title = model.name
+
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words

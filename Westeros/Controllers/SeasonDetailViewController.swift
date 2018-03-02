@@ -18,7 +18,6 @@ class SeasonDetailViewController: UIViewController {
         self.model = model
         
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
-        title = model.name
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,18 +27,26 @@ class SeasonDetailViewController: UIViewController {
     // Mark: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         setupUI()
         syncModelWithView()
     }
     
     // Mark: - Sync
     func syncModelWithView() {
-        
+        title = model.name
+
     }
     
     // Mark: - UI
     func setupUI() {
         
     }
-    
+}
+
+extension SeasonDetailViewController: SeasonListViewControllerDelegate {
+    func seasonListViewController(_ viewController: SeasonListViewController, didSelectSeason season: Season) {
+        self.model = season
+        syncModelWithView()
+    }
 }

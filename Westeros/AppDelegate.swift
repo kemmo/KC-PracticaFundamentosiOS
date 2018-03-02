@@ -12,6 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var splitViewController: UISplitViewController?
+    
+    // Crear el modelo
+    let houses = Repository.local.houses
+    let seasons = Repository.local.seasons
+    
+    var houseListViewController: HouseListViewController?
+    var seasonListViewController: SeasonListViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -20,12 +28,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .cyan
         window?.makeKeyAndVisible()
         
-        // Crear el modelo
-        let houses = Repository.local.houses
-
         // Creamos los controladores (masterVC, detailVC)
-        let houseListViewController = HouseListViewController(model: houses)
+        houseListViewController = HouseListViewController(model: houses)
+        let lastSelectedHouse = houseListViewController!.lastSelectedHouse()
+        let houseDetailViewController = HouseDetailViewController(model: lastSelectedHouse)
+        houseListViewController!.delegate = houseDetailViewController
         
+        seasonListViewController = SeasonListViewController(model: seasons)
+        /*let lastSelectedSeason = seasonListViewController!.lastSelectedSeason()
+        let seasonDetailViewController = SeasonDetailViewController(model: lastSelectedSeason)
+        seasonListViewController!.delegate = seasonDetailViewController*/
+
+        let houseListNavigationViewController = houseListViewController!.wrappedInNavigation()
+        let seasonListNavigationViewController = seasonListViewController!.wrappedInNavigation()
+
+        let tabBarController = UITabBarController()
+        tabBarController.delegate = self
+        tabBarController.viewControllers = [
+            houseListNavigationViewController,
+            seasonListNavigationViewController
+        ]
+        
+        splitViewController = UISplitViewController()
+        splitViewController?.viewControllers = [
+            tabBarController,
+            houseDetailViewController.wrappedInNavigation()
+        ]
+        
+        window?.rootViewController = splitViewController
+        
+        /*
         let lastSelectedHouse = houseListViewController.lastSelectedHouse()
         let houseDetailViewController = HouseDetailViewController(model: lastSelectedHouse)
         
@@ -41,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Asignamos el rootVC
         window?.rootViewController = splitViewController
         
-        UINavigationBar.appearance().backgroundColor = .blue
+        UINavigationBar.appearance().backgroundColor = .blue*/
         
         return true
     }
@@ -66,5 +98,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+}
+
+extension AppDelegate: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        var viewController: UIViewController
+        
+        switch tabBarController.selectedIndex {
+        case 0:
+            let lastSelectedHouse = houseListViewController!.lastSelectedHouse()
+            let houseDetailViewController = HouseDetailViewController(model: lastSelectedHouse)
+            houseListViewController!.delegate = houseDetailViewController
+            
+            viewController = houseDetailViewController
+        case 1:
+            let lastSelectedSeason = seasonListViewController!.lastSelectedSeason()
+            let seasonDetailViewController = SeasonDetailViewController(model: lastSelectedSeason)
+            seasonListViewController!.delegate = seasonDetailViewController
+            
+            viewController = seasonDetailViewController
+        default:
+            return
+        }
+        
+        splitViewController?.showDetailViewController(viewController.wrappedInNavigation(), sender: nil)
     }
 }

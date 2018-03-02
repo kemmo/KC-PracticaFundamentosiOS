@@ -13,7 +13,6 @@ let HOUSE_DID_CHANGE_NOTIFICATION_NAME = "HOUSE_DID_CHANGE_NOTIFICATION_NAME"
 let LAST_HOUSE = "LAST_HOUSE"
 
 protocol HouseListViewControllerDelegate: class {
-    // should, will, did
     func houseListViewController(_ viewController: HouseListViewController, didSelectHouse: House)
 }
 
