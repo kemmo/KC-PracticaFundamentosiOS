@@ -16,9 +16,9 @@ class EpisodeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        seasonOne = Season(name: "SeasonOne", releaseDate: Date(dateString: "2000-01-01"), firstEpisodeTitle: "First episode")
-        episodeOne = Episode(title: "First episode", issueDate: Date(dateString: "2000-01-01"), season: seasonOne)
-        episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), season: seasonOne)
+        episodeOne = Episode(title: "First episode", issueDate: Date(dateString: "2000-01-01"), summary: "", season: nil)
+        seasonOne = Season(name: "SeasonOne", releaseDate: Date(dateString: "2000-01-01"), firstEpisode: episodeOne)
+        episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), summary: "", season: seasonOne)
     }
     
     override func tearDown() {
@@ -28,7 +28,7 @@ class EpisodeTests: XCTestCase {
     func testAddEpisodeToSeasonByCreatingEpisode() {
         XCTAssertEqual(seasonOne.episodeCount, 2)
         
-        let _ = Episode(title: "Third episode", issueDate: Date(dateString: "2000-01-15"), season: seasonOne)
+        let _ = Episode(title: "Third episode", issueDate: Date(dateString: "2000-01-15"), summary: "", season: seasonOne)
         XCTAssertEqual(seasonOne.episodeCount, 3)
     }
     
@@ -37,7 +37,7 @@ class EpisodeTests: XCTestCase {
         XCTAssertEqual(episodeOne, episodeOne)
         
         // Igualdad
-        let episodeOneRepeated = Episode(title: "First episode", issueDate: Date(dateString: "2000-01-01"), season: seasonOne)
+        let episodeOneRepeated = Episode(title: "First episode", issueDate: Date(dateString: "2000-01-01"), summary: "", season: seasonOne)
         XCTAssertEqual(episodeOne, episodeOneRepeated)
         
         // Desigualdad
@@ -53,6 +53,6 @@ class EpisodeTests: XCTestCase {
     }
     
     func testEpisodeCustomStringConvertible() {
-        XCTAssertEqual(episodeOne.description, "(Episode: \(episodeOne.title), issue date: \(episodeOne.issueDate.stringDate), of season: \(episodeOne.season?.name ?? "Unknown")")
+        XCTAssertEqual(episodeOne.description, "Episode: \(episodeOne.title), issue date: \(episodeOne.issueDate.stringDate), of season: \(episodeOne.season?.name ?? "Unknown")")
     }
 }

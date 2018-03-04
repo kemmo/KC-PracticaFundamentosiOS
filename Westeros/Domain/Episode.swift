@@ -11,12 +11,14 @@ import Foundation
 final class Episode {
     let title: String
     let issueDate: Date
+    let summary: String
     weak var season: Season?
     
-    init(title: String, issueDate: Date, season: Season?) {
+    init(title: String, issueDate: Date, summary: String, season: Season?) {
         self.title = title
         self.issueDate = issueDate
         self.season = season
+        self.summary = summary
         
         if let season = season {
             season.add(episode: self)
@@ -68,6 +70,6 @@ extension Episode: Comparable {
 // MARK: - CustomStringConvertible
 extension Episode: CustomStringConvertible {
     var description: String {
-        return "(Episode: \(self.title), issue date: \(self.issueDate.stringDate), of season: \(self.season?.name ?? "Unknown")"
+        return "Episode: \(self.title), issue date: \(self.issueDate.stringDate), of season: \(self.season?.name ?? "Unknown")"
     }
 }

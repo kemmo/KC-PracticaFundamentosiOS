@@ -30,9 +30,9 @@ class HouseTests: XCTestCase {
         starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
         lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Lannister")!)
         
-        robb = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse)
-        arya = Person(name: "Arya", house: starkHouse)
-        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse)
+        robb = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse, wikiUrl: URL(string: "https://es.wikipedia.org/wiki/Robb_Stark")!)
+        arya = Person(name: "Arya", house: starkHouse, wikiUrl: URL(string: "https://es.wikipedia.org/wiki/Arya_Stark")!)
+        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse, wikiUrl:  URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
     }
     
     override func tearDown() {
@@ -64,8 +64,8 @@ class HouseTests: XCTestCase {
         starkHouse.add(person: tyrion)
         XCTAssertEqual(starkHouse.count, 2)
         
-        let cersei = Person(name: "Cersei", house: lannisterHouse)
-        let jaime = Person(name: "Jaime", alias: "El Matarreyes", house: lannisterHouse)
+        let cersei = Person(name: "Cersei", house: lannisterHouse, wikiUrl:  URL(string: "https://es.wikipedia.org/wiki/Cersei_Lannister")!)
+        let jaime = Person(name: "Jaime", alias: "El Matarreyes", house: lannisterHouse, wikiUrl:  URL(string: "https://es.wikipedia.org/wiki/Jaime_Lannister")!)
         
         lannisterHouse.add(persons: cersei, jaime, jaime, jaime, jaime, arya, robb)
         XCTAssertEqual(lannisterHouse.count, 2)

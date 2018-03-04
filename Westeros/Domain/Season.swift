@@ -15,11 +15,12 @@ final class Season {
     let releaseDate: Date
     fileprivate var _episodes: Episodes
     
-    init(name: String, releaseDate: Date, firstEpisodeTitle: String) {
+    init(name: String, releaseDate: Date, firstEpisode: Episode) {
         self.name = name
         self.releaseDate = releaseDate
         _episodes = Episodes()
-        _episodes.insert(Episode(title: firstEpisodeTitle, issueDate: releaseDate, season: self))
+        firstEpisode.season = self
+        _episodes.insert(firstEpisode)
     }
 }
 
@@ -80,6 +81,6 @@ extension Season: Comparable {
 // MARK: - CustomStringConvertible
 extension Season: CustomStringConvertible {
     var description: String {
-        return "(Season: \(self.name), relase date: \(self.releaseDate.stringDate()), with: \(self._episodes.count) episodes"
+        return "Season: \(self.name), relase date: \(self.releaseDate.stringDate()), with: \(self._episodes.count) episodes"
     }
 }

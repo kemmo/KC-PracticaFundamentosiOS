@@ -35,7 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         houseListViewController!.delegate = houseDetailViewController
         
         seasonListViewController = SeasonListViewController(model: seasons)
-
+        let lastSelectedSeason = seasonListViewController!.lastSelectedSeason()
+        let seasonDetailViewController = SeasonDetailViewController(model: lastSelectedSeason)
+        seasonListViewController!.delegate = seasonDetailViewController
+        
         let houseListNavigationViewController = houseListViewController!.wrappedInNavigation()
         let seasonListNavigationViewController = seasonListViewController!.wrappedInNavigation()
 
@@ -49,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         splitViewController = UISplitViewController()
         splitViewController?.viewControllers = [
             tabBarController.wrappedInNavigation(),
-            houseDetailViewController.wrappedInNavigation()
+            houseDetailViewController.wrappedInNavigation(),
+            seasonDetailViewController.wrappedInNavigation()
         ]
         
         houseDetailViewController.navigationItem.leftItemsSupplementBackButton = true

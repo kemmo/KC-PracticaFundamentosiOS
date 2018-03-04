@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import WebKit
 
 class MemberDetailViewController: UIViewController {
 
+    // Mark: - Outlets
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    
     // Mark: - Properties
     let model: Person
     
@@ -28,6 +33,10 @@ class MemberDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = model.fullName
+        loadingView.isHidden = false
+        loadingView.startAnimating()
+        webView.navigationDelegate = self
+        syncModelWithView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,5 +58,30 @@ class MemberDetailViewController: UIViewController {
     // MARK: - Notifications
     @objc func houseDidChange(notification: Notification) {
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // MARK: - Sync
+    func syncModelWithView() {
+        title = model.name
+        
+        webView.load(URLRequest(url: model.wikiUrl))
+    }
+}
+
+extension MemberDetailViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingView.stopAnimating()
+        loadingView.isHidden = true
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        let type = navigationAction.navigationType
+        switch type {
+        case .linkActivated, .formSubmitted:
+            decisionHandler(.cancel)
+        default:
+            decisionHandler(.allow)
+        }
     }
 }

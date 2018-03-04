@@ -29,10 +29,10 @@ class PersonTests: XCTestCase {
         starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Stark")!)
         lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido", url: URL(string: "http://awoiaf.westeros.org/index.php/House_Lannister")!)
         
-        robb = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse)
-        arya = Person(name: "Arya", house: starkHouse)
+        robb = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse, wikiUrl: URL(string: "https://es.wikipedia.org/wiki/Robb_Stark")!)
+        arya = Person(name: "Arya", house: starkHouse, wikiUrl: URL(string: "https://es.wikipedia.org/wiki/Arya_Stark")!)
         
-        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse)
+        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse, wikiUrl:  URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
     }
     
     override func tearDown() {
@@ -53,7 +53,7 @@ class PersonTests: XCTestCase {
         XCTAssertEqual(tyrion, tyrion)
         
         // Igualdad
-        let enano = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse)
+        let enano = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse, wikiUrl: URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
         XCTAssertEqual(enano, tyrion)
         
         // Desigualdad

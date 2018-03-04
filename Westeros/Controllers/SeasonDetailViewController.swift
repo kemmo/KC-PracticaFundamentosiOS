@@ -10,6 +10,11 @@ import UIKit
 
 class SeasonDetailViewController: UIViewController {
 
+    // Mark: - Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var episodesView: UIView!
+    
     // Mark: - Properties
     var model: Season
     
@@ -28,21 +33,20 @@ class SeasonDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        setupUI()
         syncModelWithView()
     }
     
     // Mark: - Sync
     func syncModelWithView() {
         title = model.name
-
-    }
-    
-    // Mark: - UI
-    func setupUI() {
-        let episodesButton = UIBarButtonItem(title: "Episodes", style: .plain, target: self, action: #selector(displayEpisodes))
+        titleLabel.text = model.name
+        subtitleLabel.text = model.description
         
-        navigationItem.rightBarButtonItems = [episodesButton]
+        let episodeListViewController = EpisodeListViewController(model: model.sortedEpisodes)
+        
+        addChildViewController(episodeListViewController)
+        episodeListViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        episodesView.addSubview(episodeListViewController.view)
     }
     
     @objc func displayEpisodes() {
@@ -60,3 +64,4 @@ extension SeasonDetailViewController: SeasonListViewControllerDelegate {
         syncModelWithView()
     }
 }
+

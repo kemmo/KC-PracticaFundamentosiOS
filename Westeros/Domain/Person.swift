@@ -11,16 +11,18 @@ import Foundation
 final class Person {
     let name: String
     let house: House
+    let wikiUrl: URL
     private let _alias: String?
     
     var alias: String {
         return _alias ?? ""
     }
     
-    init(name: String, alias: String? = nil, house: House) {
+    init(name: String, alias: String? = nil, house: House, wikiUrl: URL) {
         self.name = name
         _alias = alias
         self.house = house
+        self.wikiUrl = wikiUrl
     }
 }
 

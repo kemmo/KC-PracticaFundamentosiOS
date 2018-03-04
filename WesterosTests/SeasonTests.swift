@@ -15,8 +15,8 @@ class SeasonTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        seasonOne = Season(name: "SeasonOne", releaseDate: Date(dateString: "2000-01-01"), firstEpisodeTitle: "First episode")
-        episodeOne = Episode(title: "First episode", issueDate: Date(dateString: "2000-01-01"), season: seasonOne)
+        episodeOne = Episode(title: "First episode", issueDate: Date(dateString: "2000-01-01"), summary: "", season: nil)
+        seasonOne = Season(name: "SeasonOne", releaseDate: Date(dateString: "2000-01-01"), firstEpisode: episodeOne)
     }
     
     override func tearDown() {
@@ -34,7 +34,7 @@ class SeasonTests: XCTestCase {
     func testAddEpisodyWithoutPreviousSeason() {
         XCTAssertEqual(seasonOne.episodeCount, 1)
 
-        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), season: nil)
+        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), summary: "", season: nil)
         seasonOne.add(episode: episodeTwo)
         
         XCTAssertEqual(seasonOne.episodeCount, 2)
@@ -46,7 +46,7 @@ class SeasonTests: XCTestCase {
         seasonOne.add(episode: episodeOne)
         XCTAssertEqual(seasonOne.episodeCount, 1)
         
-        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), season: seasonOne)
+        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), summary: "", season: seasonOne)
         seasonOne.add(episode: episodeTwo)
         XCTAssertEqual(seasonOne.episodeCount, 2)
     }
@@ -54,7 +54,7 @@ class SeasonTests: XCTestCase {
     func testAddEpisodesInOneCall() {
         XCTAssertEqual(seasonOne.episodeCount, 1)
         
-        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), season: seasonOne)
+        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), summary: "", season: seasonOne)
 
         seasonOne.add(episodes: episodeOne, episodeTwo, episodeTwo, episodeOne)
         XCTAssertEqual(seasonOne.episodeCount, 2)
@@ -65,11 +65,11 @@ class SeasonTests: XCTestCase {
         XCTAssertEqual(seasonOne, seasonOne)
         
         // Igualdad
-        let seasonOneRepeated = Season(name: "SeasonOne", releaseDate: Date(dateString: "2000-01-01"), firstEpisodeTitle: "First episode")
+        let seasonOneRepeated = Season(name: "SeasonOne", releaseDate: Date(dateString: "2000-01-01"), firstEpisode: episodeOne)
         XCTAssertEqual(seasonOne, seasonOneRepeated)
         
         // Desigualdad
-        let seasonTwo = Season(name: "SeasonTwo", releaseDate: Date(dateString: "2000-02-01"), firstEpisodeTitle: "First episode")
+        let seasonTwo = Season(name: "SeasonTwo", releaseDate: Date(dateString: "2000-02-01"), firstEpisode: episodeOne)
         XCTAssertNotEqual(seasonOne, seasonTwo)
     }
     
@@ -78,18 +78,18 @@ class SeasonTests: XCTestCase {
     }
     
     func testSeasonComparison() {
-        let seasonZero = Season(name: "SeasonZero", releaseDate: Date(dateString: "1999-12-01"), firstEpisodeTitle: "First episode")
+        let seasonZero = Season(name: "SeasonZero", releaseDate: Date(dateString: "1999-12-01"), firstEpisode: episodeOne)
 
         XCTAssertLessThan(seasonZero, seasonOne)
     }
     
     func testSeasonReturnsSortedArrayOfEpisodes() {
-        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), season: seasonOne)
+        let episodeTwo = Episode(title: "Second episode", issueDate: Date(dateString: "2000-01-08"), summary: "", season: seasonOne)
 
         XCTAssertEqual(seasonOne.sortedEpisodes, [episodeOne, episodeTwo])
     }
     
     func testSeasonCustomStringConvertible() {
-        XCTAssertEqual(seasonOne.description, "(Season: \(seasonOne.name), relase date: \(seasonOne.releaseDate.stringDate()), with: \(seasonOne.episodeCount) episodes")
+        XCTAssertEqual(seasonOne.description, "Season: \(seasonOne.name), relase date: \(seasonOne.releaseDate.stringDate()), with: \(seasonOne.episodeCount) episodes")
     }
 }

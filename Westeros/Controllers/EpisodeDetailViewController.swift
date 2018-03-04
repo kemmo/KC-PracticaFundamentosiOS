@@ -10,6 +10,9 @@ import UIKit
 
 class EpisodeDetailViewController: UIViewController {
 
+    // Mark: - Outlets
+    @IBOutlet weak var summaryTextView: UITextView!
+    
     // Mark: - Properties
     var model: Episode
     
@@ -28,18 +31,28 @@ class EpisodeDetailViewController: UIViewController {
     // Mark: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUI()
         syncModelWithView()
+
+        // Nos damos de alta ...
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(seasonDidChange), name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Nos damos de baja ...
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
+    // MARK: - Notifications
+    @objc func seasonDidChange(notification: Notification) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     // Mark: - Sync
     func syncModelWithView() {
-        
+        summaryTextView.text = model.summary
     }
-    
-    // Mark: - UI
-    func setupUI() {
-        
-    }
-    
 }
