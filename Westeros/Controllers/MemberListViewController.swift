@@ -37,6 +37,7 @@ class MemberListViewController: UIViewController {
         
         // Asignamos la fuente de datos
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,5 +95,17 @@ extension MemberListViewController: UITableViewDataSource {
         
         // Devolver la celda
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension MemberListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let person = model[indexPath.row]
+        let viewController = MemberDetailViewController(model: person)
+        
+        navigationController?.pushViewController(viewController, animated: true)
+        
     }
 }

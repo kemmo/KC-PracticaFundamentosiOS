@@ -41,6 +41,8 @@
 		5EB9E4C22049B98E0002E61B /* EpisodeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C02049B98E0002E61B /* EpisodeListViewController.xib */; };
 		5EB9E4C52049B9A70002E61B /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C32049B9A70002E61B /* EpisodeDetailViewController.swift */; };
 		5EB9E4C62049B9A70002E61B /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C42049B9A70002E61B /* EpisodeDetailViewController.xib */; };
+		5EB9E4C9204C03320002E61B /* MemberDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C7204C03320002E61B /* MemberDetailViewController.swift */; };
+		5EB9E4CA204C03320002E61B /* MemberDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB9E4C8204C03320002E61B /* MemberDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		5EB9E4C02049B98E0002E61B /* EpisodeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeListViewController.xib; sourceTree = "<group>"; };
 		5EB9E4C32049B9A70002E61B /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		5EB9E4C42049B9A70002E61B /* EpisodeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailViewController.xib; sourceTree = "<group>"; };
+		5EB9E4C7204C03320002E61B /* MemberDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailViewController.swift; sourceTree = "<group>"; };
+		5EB9E4C8204C03320002E61B /* MemberDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				5EB9E4C02049B98E0002E61B /* EpisodeListViewController.xib */,
 				5EB9E4C32049B9A70002E61B /* EpisodeDetailViewController.swift */,
 				5EB9E4C42049B9A70002E61B /* EpisodeDetailViewController.xib */,
+				5EB9E4C7204C03320002E61B /* MemberDetailViewController.swift */,
+				5EB9E4C8204C03320002E61B /* MemberDetailViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 				5EB9E4C62049B9A70002E61B /* EpisodeDetailViewController.xib in Resources */,
 				4BC935FC202CE4A7007FE051 /* Assets.xcassets in Resources */,
 				4BAFC987203238ED00C8BF74 /* codeIsComing.png in Resources */,
+				5EB9E4CA204C03320002E61B /* MemberDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB9E4C9204C03320002E61B /* MemberDetailViewController.swift in Sources */,
 				4BAFC98C20323A8500C8BF74 /* HouseDetailViewController.swift in Sources */,
 				4BC9361D202CFDF0007FE051 /* Person.swift in Sources */,
 				5EB9E4AD2048C0DC0002E61B /* Season.swift in Sources */,

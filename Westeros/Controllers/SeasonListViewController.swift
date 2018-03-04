@@ -34,8 +34,7 @@ class SeasonListViewController: UITableViewController {
     }
     
     // Mark: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         let lastRow = UserDefaults.standard.integer(forKey: LAST_SEASON)
         let indexPath = IndexPath(row: lastRow, section: 0)
         

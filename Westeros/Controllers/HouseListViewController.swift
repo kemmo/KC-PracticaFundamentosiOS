@@ -34,8 +34,7 @@ class HouseListViewController: UITableViewController {
     }
 
     // Mark: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         let lastRow = UserDefaults.standard.integer(forKey: LAST_HOUSE)
         let indexPath = IndexPath(row: lastRow, section: 0)
         
@@ -70,7 +69,7 @@ class HouseListViewController: UITableViewController {
         return cell!
     }
     
-    // MARK: Table View Delegate
+    // MARK: - Table View Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Averiguar que casa han pulsado
         let house = model[indexPath.row]
