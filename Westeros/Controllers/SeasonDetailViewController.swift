@@ -40,7 +40,17 @@ class SeasonDetailViewController: UIViewController {
     
     // Mark: - UI
     func setupUI() {
+        let episodesButton = UIBarButtonItem(title: "Episodes", style: .plain, target: self, action: #selector(displayEpisodes))
         
+        navigationItem.rightBarButtonItems = [episodesButton]
+    }
+    
+    @objc func displayEpisodes() {
+        // Creamos el VC
+        let episodeListViewController = EpisodeListViewController(model: model.sortedEpisodes)
+        
+        // Hacemos Push
+        navigationController?.pushViewController(episodeListViewController, animated: true)
     }
 }
 

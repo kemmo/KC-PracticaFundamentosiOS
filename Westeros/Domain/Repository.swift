@@ -64,6 +64,12 @@ final class LocalFactory: HouseFactory {
         return house
     }
     
+    func house(safeNamed name: HouseName) -> House? {
+        let house = houses.filter{ $0.name.uppercased() == name.rawValue.uppercased() }.first
+        
+        return house
+    }
+    
     func houses(filteredBy: HouseFilter) -> [House] {
         return Repository.local.houses.filter(filteredBy)
     }
@@ -71,13 +77,13 @@ final class LocalFactory: HouseFactory {
 
 extension LocalFactory: SeasonFactory {
     var seasons: [Season] {
-        let seasonOne = Season(name: "T1", releaseDate: Date.init(dateString: "2011-04-17"), firstEpisodeTitle: "Winter Is Coming")
-        let seasonTwo = Season(name: "T2", releaseDate: Date.init(dateString: "2012-04-01"), firstEpisodeTitle: "The North Remembers")
-        let seasonThree = Season(name: "T3", releaseDate: Date.init(dateString: "2013-03-31"), firstEpisodeTitle: "Valar Dohaeris")
-        let seasonFour = Season(name: "T4", releaseDate: Date.init(dateString: "2014-04-06"), firstEpisodeTitle: "Two Swords")
-        let seasonFive = Season(name: "T5", releaseDate: Date.init(dateString: "2015-04-12"), firstEpisodeTitle: "The Wars to Come")
-        let seasonSix = Season(name: "T6", releaseDate: Date.init(dateString: "2016-04-24"), firstEpisodeTitle: "The Red Woman")
-        let seasonSeven = Season(name: "T7", releaseDate: Date.init(dateString: "2017-07-16"), firstEpisodeTitle: "Dragonstone")
+        let seasonOne = Season(name: "Season 1", releaseDate: Date.init(dateString: "2011-04-17"), firstEpisodeTitle: "Winter Is Coming")
+        let seasonTwo = Season(name: "Season 2", releaseDate: Date.init(dateString: "2012-04-01"), firstEpisodeTitle: "The North Remembers")
+        let seasonThree = Season(name: "Season 3", releaseDate: Date.init(dateString: "2013-03-31"), firstEpisodeTitle: "Valar Dohaeris")
+        let seasonFour = Season(name: "Season 4", releaseDate: Date.init(dateString: "2014-04-06"), firstEpisodeTitle: "Two Swords")
+        let seasonFive = Season(name: "Season 5", releaseDate: Date.init(dateString: "2015-04-12"), firstEpisodeTitle: "The Wars to Come")
+        let seasonSix = Season(name: "Season 6", releaseDate: Date.init(dateString: "2016-04-24"), firstEpisodeTitle: "The Red Woman")
+        let seasonSeven = Season(name: "Season 7", releaseDate: Date.init(dateString: "2017-07-16"), firstEpisodeTitle: "Dragonstone")
         
         let _ = Episode(title: "The Kingsroad", issueDate: Date.init(dateString: "2011-04-24"), season: seasonOne)
         let _ = Episode(title: "Lord Snow", issueDate: Date.init(dateString: "2011-05-01"), season: seasonOne)

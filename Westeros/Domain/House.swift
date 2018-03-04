@@ -11,6 +11,12 @@ import UIKit
 typealias Words = String
 typealias Members = Set<Person>
 
+enum HouseName: String {
+    case lannister = "Lannister"
+    case stark = "Stark"
+    case targaryen = "Targaryen"
+}
+
 // MARK: - House
 final class House {
     let name: String

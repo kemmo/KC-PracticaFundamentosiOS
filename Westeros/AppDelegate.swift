@@ -35,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         houseListViewController!.delegate = houseDetailViewController
         
         seasonListViewController = SeasonListViewController(model: seasons)
-        /*let lastSelectedSeason = seasonListViewController!.lastSelectedSeason()
-        let seasonDetailViewController = SeasonDetailViewController(model: lastSelectedSeason)
-        seasonListViewController!.delegate = seasonDetailViewController*/
 
         let houseListNavigationViewController = houseListViewController!.wrappedInNavigation()
         let seasonListNavigationViewController = seasonListViewController!.wrappedInNavigation()
@@ -51,29 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         splitViewController = UISplitViewController()
         splitViewController?.viewControllers = [
-            tabBarController,
+            tabBarController.wrappedInNavigation(),
             houseDetailViewController.wrappedInNavigation()
         ]
         
+        houseDetailViewController.navigationItem.leftItemsSupplementBackButton = true
+        houseDetailViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        
         window?.rootViewController = splitViewController
-        
-        /*
-        let lastSelectedHouse = houseListViewController.lastSelectedHouse()
-        let houseDetailViewController = HouseDetailViewController(model: lastSelectedHouse)
-        
-        // Asignar delegados
-        houseListViewController.delegate = houseDetailViewController
-        
-        // Crear el UISplitVC y le asignamos los viewControllers (master y detail)
-        let splitViewController = UISplitViewController()
-        splitViewController.viewControllers = [
-            houseListViewController.wrappedInNavigation(), houseDetailViewController.wrappedInNavigation()
-        ]
-        
-        // Asignamos el rootVC
-        window?.rootViewController = splitViewController
-        
-        UINavigationBar.appearance().backgroundColor = .blue*/
         
         return true
     }
@@ -121,6 +103,9 @@ extension AppDelegate: UITabBarControllerDelegate {
         default:
             return
         }
+        
+        viewController.navigationItem.leftItemsSupplementBackButton = true
+        viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         
         splitViewController?.showDetailViewController(viewController.wrappedInNavigation(), sender: nil)
     }
